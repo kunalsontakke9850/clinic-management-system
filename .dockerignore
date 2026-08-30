@@ -3,6 +3,9 @@
 !Dockerfile
 !.dockerignore
 !.gitignore
+!.github/
+!.github/workflows/
+!.github/workflows/*.yml
 !README.md
 !package.json
 !package-lock.json
@@ -10,6 +13,7 @@
 !index.html
 !app.js
 !config.js
+!config.local.example.js
 !demo-data.js
 !print.js
 !sheets.js
@@ -27,6 +31,7 @@
 !admin.js
 !access-control.js
 !reception.js
+!receptionist.js
 !whatsapp-messaging.js
 !sheet-operation.js
 !Apps-Script-Code.gs

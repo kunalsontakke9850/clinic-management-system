@@ -29,7 +29,7 @@ test('Docker build context retains the safe sources required by the test suite',
   const dockerignore = fs.readFileSync(path.join(root, '.dockerignore'), 'utf8');
 
   assert.ok(fs.existsSync(path.join(root, 'desktop-workspace.js')), 'the desktop workspace source must be present');
-  ['!.gitignore', '!desktop-workspace.js'].forEach(function (entry) {
+  ['!.gitignore', '!desktop-workspace.js', '!.github/workflows/*.yml', '!config.local.example.js', '!receptionist.js'].forEach(function (entry) {
     assert.match(dockerignore, new RegExp('^' + entry.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$', 'm'), entry + ' must be included in the Docker build context');
   });
 });
