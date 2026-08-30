@@ -53,6 +53,17 @@ test('default test command runs every maintained node:test file', function () {
   assert.equal(pkg.scripts.test, 'node --test tests/*.test.js');
 });
 
+test('portfolio documentation is complete and does not overclaim', function () {
+  const readme = fs.readFileSync(path.join(projectRoot, 'README.md'), 'utf8');
+  ['Impact', 'Problem', 'Key Features', 'Tech Stack', 'Architecture', 'Automated Testing', 'Continuous Integration', 'Docker', 'Demo', 'Build', 'Privacy & Security', 'Screenshots', 'Future Improvements'].forEach(function (heading) {
+    assert.match(readme, new RegExp('^## .*' + heading.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&'), 'm'), heading + ' section is required');
+  });
+  assert.match(readme, /actions\/workflows\/ci\.yml/, 'README must link to the CI workflow');
+  assert.match(readme, /\?demo=1/, 'README must document the opt-in demo mode');
+  assert.match(readme, /npm run dist/, 'README must document the Windows build command');
+  assert.doesNotMatch(readme, /Dockerize the application/i, 'completed Docker work must not be listed as a future improvement');
+});
+
 test('repository hygiene files protect generated and local-only content', function () {
   const gitignore = fs.readFileSync(path.join(projectRoot, '.gitignore'), 'utf8');
   ['node_modules/', 'dist/', 'config.local.js', 'Trial 2/', 'images/Header.png', 'images/QRCode.png', 'docs/superpowers/'].forEach(function (entry) {

@@ -1,6 +1,8 @@
 # Clinic Management & Prescription System
 
-A desktop clinic management and digital prescription application built with Electron. It centralizes patient visits, prescriptions, appointments, billing, finance records, and routine reception workflows in one locally run workspace.
+[![Clinic Management CI](https://github.com/kunalsontakke9850/clinic-management-system/actions/workflows/ci.yml/badge.svg)](https://github.com/kunalsontakke9850/clinic-management-system/actions/workflows/ci.yml) [![Node.js 20](https://img.shields.io/badge/Node.js-20-339933?logo=node.js&logoColor=white)](https://nodejs.org/) [![Electron](https://img.shields.io/badge/Electron-desktop-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/)
+
+A locally run Electron desktop application that centralizes patient visits, digital prescriptions, appointments, reception, billing, payments, expenses, and finance workflows.
 
 ## Impact
 
@@ -8,114 +10,117 @@ Reduced patient-record and prescription-processing time by approximately 80% by 
 
 ## Problem
 
-Routine clinic workflows often depend on handwritten or disconnected manual processes. This application was built to centralize everyday clinical administration while keeping clinic-specific configuration outside the source repository.
+Handwritten and disconnected clinic processes make patient history, prescriptions, appointment follow-up, and payment reconciliation slow to manage. The application brings those workflows into one desktop workspace while keeping clinic-specific configuration local.
 
 ## Key Features
 
-- Patient visit records and editable prescription workflows
-- Digital prescription and receipt printing
-- Appointment, follow-up, and previous-record views
-- Reception workflow with doctor access controls
-- Billing, payment ledger, expenses, refunds, and cashbook reporting
-- Optional Google Apps Script/Google Sheets synchronization
-- WhatsApp appointment-reminder preparation
-- Local X-ray image attachment support for visits
+- Patient registration, visit history, prescription editing, and printable receipts
+- Reception queue, doctor access control, and role-aware workspace navigation
+- Appointment scheduling, follow-up records, and previous-record views
+- Billing, payment ledger, partial payments, refunds, expenses, and cashbook reporting
+- Optional Google Apps Script and Google Sheets synchronization with offline-first local caching
+- WhatsApp appointment-reminder preparation that requires review before opening a draft
+- Local X-ray/image attachment support for visit records
+- Fictional opt-in demo mode for portfolio review
 
 ## Tech Stack
 
-- JavaScript and HTML/CSS
-- Electron
-- Node.js
-- Google Apps Script and Google Sheets (optional synchronization)
-- `node:test` and JSDOM for automated checks
+Electron · Node.js · JavaScript · HTML/CSS · Google Apps Script · Google Sheets · `node:test` · JSDOM · Docker · GitHub Actions
 
 ## Architecture
 
 ```text
-Electron desktop shell
-        ↓
-Clinic workflow interface and local browser storage
-        ↓
-Optional Google Apps Script API
-        ↓
+Electron desktop shell (main.js)
+            |
+HTML/CSS workspace + JavaScript modules (index.html)
+            |
+Local browser storage and offline sync queue
+            |
+Optional Google Apps Script contract
+            |
 Google Sheets persistence
 ```
 
-## Project Structure
+The application is a desktop client, not a hosted web service. Docker validates the Node.js test environment; it does not run the Electron GUI.
 
-- `index.html` — primary application interface and workflow orchestration
-- `main.js` — Electron desktop entry point
-- `finance-*.js`, `payment-ledger.js` — billing, payments, and finance workflows
-- `reception.js`, `access-control.js`, `admin.js` — reception and access-control features
-- `Apps-Script-Code.gs` — optional Google Apps Script backend
-- `tests/` — automated contract and module tests
-- `config.js` — safe public defaults
-- `config.local.example.js` — local configuration template
+## Automated Testing
 
-## Local Development Setup
-
-Requirements: Node.js 20+ and npm.
-
-```bash
-git clone <your-private-repository-url>
-cd clinic-management-system
-npm install
-```
-
-Create your local clinic configuration. This file is ignored by Git and must never be committed.
-
-Windows PowerShell:
-
-```powershell
-Copy-Item config.local.example.js config.local.js
-```
-
-macOS/Linux:
-
-```bash
-cp config.local.example.js config.local.js
-```
-
-Update `config.local.js` with your own Apps Script URL, write key, and clinic details, then run:
-
-```bash
-npm start
-```
-
-Run the automated checks with:
+The default command runs every maintained Node test file:
 
 ```bash
 npm test
 ```
 
+The suite covers access control, administration, reception and doctor workflows, prescriptions and medicine parsing, billing and finance calculations, payment/refund rules, Apps Script contracts, WhatsApp draft preparation, desktop navigation, configuration safety, Docker contracts, and module smoke checks. Tests use fictional deterministic fixtures with `node:test` and JSDOM.
+
+## Continuous Integration
+
+GitHub Actions runs the same Node 20 test command on pushes to `main`, pull requests targeting `main`, and manual dispatch. It uses npm dependency caching, `npm ci --ignore-scripts`, and read-only repository permissions.
+
 ## Docker Test Environment
 
-Docker provides a reproducible Node.js test environment. It does not run the Electron GUI or create the Windows installer; those remain native desktop operations.
+Docker provides a reproducible Node.js test environment. It does not run the Electron GUI or create the Windows installer.
 
 ```bash
 docker build --tag clinic-management-system-test .
 docker run --rm clinic-management-system-test
 ```
 
-The build context uses an allowlist, so local clinic configuration, patient-related artifacts, generated installers, and private images are not sent to the Docker daemon.
+The Docker build context is allowlisted and excludes local configuration, credentials, patient-related artifacts, private images, generated installers, and databases.
 
-## Environment and Local Configuration
+## Demo
 
-The desktop application reads clinic-specific values from `config.local.js`, not from version-controlled source files. The `.env.example` file documents the corresponding variable names for deployment tooling, while `config.local.example.js` is the runnable local template.
+Open the app with `?demo=1` to seed fictional local records for Arjun Mehta, including a sample visit, prescription, appointment, partial bill, and reception data. Demo mode never reads private configuration or sends network requests. Remove demo data with `window.ClinicDemo.reset()` while the same query is active. See [the screenshot guide](docs/SCREENSHOT_GUIDE.md) for safe portfolio captures.
 
-For Google Apps Script synchronization, configure the same `APP_WRITE_KEY` as a Script Property in the Apps Script project. The repository deliberately contains no fallback write key.
+## Local Development Setup
+
+Requirements: Node.js 20+ and npm.
+
+```bash
+git clone https://github.com/kunalsontakke9850/clinic-management-system.git
+cd clinic-management-system
+npm install
+npm start
+```
+
+For a private clinic installation, copy `config.local.example.js` to the ignored `config.local.js`, then add local Apps Script and clinic values. Never commit that file.
+
+## Build
+
+Build the unsigned Windows NSIS installer locally with:
+
+```bash
+npm run dist
+```
+
+The generated `dist/` directory is ignored. GitHub Actions also provides a manual/tagged Windows artifact workflow; it does not publish a release automatically.
 
 ## Privacy & Security
 
-This repository does not contain production patient records, medical data, credentials, payment QR codes, client identity, or other confidential client information. Demo/sample data, where provided, is fictional. Generated installers, local configuration, backups, screenshots, internal notes, databases, uploads, and reports are excluded from Git.
+The public defaults contain no live Apps Script URL, write key, credential, patient record, medical image, payment QR code, or client identity. Production data and configuration remain outside Git. Strict `.gitignore` and `.dockerignore` allowlists protect local files, and the application keeps Electron Node integration disabled with context isolation enabled.
+
+## Project Structure
+
+- `main.js` — Electron entry point and secure BrowserWindow configuration
+- `index.html` — primary workspace and prescription/billing orchestration
+- `reception.js`, `access-control.js`, `admin.js` — reception and role/session workflows
+- `finance-core.js`, `finance-store.js`, `finance-ui.js`, `payment-ledger.js` — finance, offline sync, billing, and payments
+- `prescription-medicines.js`, `whatsapp-messaging.js`, `sheet-operation.js` — focused workflow contracts
+- `Apps-Script-Code.gs` — optional server-side Google Sheets contract
+- `demo-data.js` — fictional opt-in portfolio data
+- `tests/` — automated contract, integration-style JSDOM, and module tests
 
 ## Screenshots
 
-Screenshots are intentionally omitted because the original images may contain clinic-specific information. Add only sanitized screenshots after a privacy review.
+No screenshots are included by default. Add only sanitized captures in `docs/screenshots/` after following [the screenshot guide](docs/SCREENSHOT_GUIDE.md).
 
 ## Future Improvements
 
-- Dockerize the application
-- Add continuous integration checks
-- Introduce a managed deployment configuration
-- Expand automated end-to-end coverage
+- Expand end-to-end coverage around the Electron shell and hosted Apps Script boundary
+- Add an export/import format for moving encrypted local settings between devices
+- Add accessibility review and keyboard-navigation coverage for every workspace
+- Evaluate a managed deployment option only if a future product version requires it
+
+## Portfolio Notes
+
+See [docs/PORTFOLIO_NOTES.md](docs/PORTFOLIO_NOTES.md) for factual recruiter-facing project notes and resume wording.
