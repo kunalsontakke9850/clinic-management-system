@@ -1,0 +1,73 @@
+{
+  "name": "clinic-management-system",
+  "version": "4.1.1",
+  "description": "Desktop clinic management and digital prescription system",
+  "main": "main.js",
+  "scripts": {
+    "test": "node --test tests/reception-home.test.js tests/prescription-quantity.test.js tests/instructions.test.js tests/medicine-suggestions.test.js tests/medicine-parser.test.js tests/finance-core.test.js tests/finance-store.test.js tests/finance-ui.test.js tests/apps-script-contract.test.js tests/desktop-workspace.test.js tests/sheet-operation.test.js tests/whatsapp-messaging.test.js tests/github-readiness.test.js",
+    "test:legacy": "node --test tests/*.test.js",
+    "start": "electron .",
+    "dist": "electron-builder --win --x64 --ia32"
+  },
+  "build": {
+    "appId": "com.clinic.management",
+    "productName": "Clinic Management System",
+    "copyright": "Copyright © Clinic Management System",
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Prescription",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "app.js",
+      "config.js",
+      "print.js",
+      "sheets.js",
+      "style.css",
+      "html2canvas.min.js",
+      "jspdf.umd.min.js",
+      "finance-core.js",
+      "finance-store.js",
+      "finance-ui.js",
+      "payment-ledger.js",
+      "prescription-medicines.js",
+      "admin.js",
+      "access-control.js",
+      "reception.js",
+      "reception.css",
+      "desktop-workspace.js",
+      "desktop-workspace.css",
+      "whatsapp-messaging.js",
+      "sheet-operation.js",
+      "images/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "devDependencies": {
+    "electron": "^29.4.0",
+    "electron-builder": "^24.13.3",
+    "jsdom": "^24.1.3"
+  }
+}

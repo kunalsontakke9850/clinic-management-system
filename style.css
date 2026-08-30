@@ -1,0 +1,445 @@
+/* =========================================================
+   style.css - Doctor Prescription Software
+   Indian Dental Clinic Letterhead design
+   ========================================================= */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-dark: #0b5e3a;
+  --green-mid:  #137a4b;
+  --green-bar:  #0e6a3f;
+  --gold:       #c9a227;
+  --ink:        #1f2937;
+  --line:       #cbd5e1;
+  --soft:       #f1f5f9;
+  --bg:         #e9eef5;
+  --rx-red:     #b91c1c;
+}
+
+html, body {
+  background: var(--bg);
+  font-family: "Segoe UI", "Noto Sans", Arial, sans-serif;
+  color: var(--ink);
+  font-size: 14px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ========== ACTION BAR ========== */
+.action-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: #fff;
+  border-bottom: 2px solid var(--green-dark);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: .3px;
+  transition: transform .08s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,.12); }
+.btn-primary { background: var(--green-dark); color: #fff; }
+.btn-success { background: #2563eb; color: #fff; }
+.btn-warn    { background: #f59e0b; color: #fff; }
+.status-msg {
+  margin-left: auto;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--green-dark);
+}
+.status-msg.error { color: #b91c1c; }
+
+/* ========== SHEET ========== */
+.sheet {
+  max-width: 900px;
+  margin: 20px auto;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,.10);
+  border: 1px solid #d1d5db;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ========== HEADER ========== */
+.rx-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px 28px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.rx-header-left .marathi-name {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--green-dark);
+  font-family: "Noto Sans Devanagari", "Mangal", "Segoe UI", sans-serif;
+  letter-spacing: .5px;
+}
+.rx-header-left .clinic-tag {
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+.rx-header-right {
+  text-align: right;
+}
+.rx-header-right .doc-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--green-dark);
+}
+.rx-header-right .doc-qual {
+  font-size: 12px;
+  color: #374151;
+  font-weight: 600;
+  margin-top: 1px;
+}
+.rx-header-right .doc-spec {
+  font-size: 12px;
+  color: #374151;
+  font-style: italic;
+  margin-top: 1px;
+}
+.rx-header-right .doc-reg {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* ========== ADDRESS BAR ========== */
+.address-bar {
+  background: var(--green-bar);
+  color: #fff;
+  padding: 8px 28px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ========== PATIENT STRIP ========== */
+.patient-strip {
+  display: flex;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e5e7eb;
+}
+.patient-strip .field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.patient-strip .field.small { flex: 0 0 90px; }
+.patient-strip label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green-dark);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 3px;
+}
+.patient-strip input,
+.patient-strip select {
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 13px;
+  background: #fff;
+}
+
+/* ========== BODY ========== */
+.rx-body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 540px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background: #f8fafc;
+  border-right: 2px solid var(--green-dark);
+  padding: 14px 14px;
+}
+.side-block { margin-bottom: 16px; }
+.side-block h4 {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--green-dark);
+  border-bottom: 1.5px solid var(--green-dark);
+  padding-bottom: 3px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.vital-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+.vital-row label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #374151;
+  width: 50px;
+}
+.vital-row input {
+  flex: 1;
+  padding: 4px 6px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-size: 12px;
+}
+.sidebar textarea {
+  width: 100%;
+  padding: 5px 6px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+/* MAIN AREA */
+.main-area {
+  padding: 14px 22px;
+}
+.rx-symbol {
+  margin-bottom: 6px;
+}
+.rx-glyph {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--rx-red);
+  font-family: "Georgia", serif;
+  line-height: 1;
+}
+
+/* MEDICINES TABLE */
+.med-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
+  font-size: 13px;
+}
+.med-table th {
+  background: var(--green-dark);
+  color: #fff;
+  padding: 6px 8px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+.med-table td {
+  border: 1px solid #e5e7eb;
+  padding: 4px 6px;
+}
+.med-table input {
+  width: 100%;
+  border: none;
+  padding: 4px 4px;
+  font-size: 13px;
+  background: transparent;
+}
+.med-table input:focus { outline: 1px solid var(--green-mid); background: #f0fdf4; }
+.med-table .row-del {
+  background: none;
+  border: none;
+  color: #b91c1c;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+.btn-mini {
+  margin-top: 6px;
+  background: #fff;
+  border: 1.5px dashed var(--green-dark);
+  color: var(--green-dark);
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+.btn-mini:hover { background: var(--green-dark); color: #fff; }
+
+/* BLOCKS */
+.block { margin-top: 16px; }
+.block h4 {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--green-dark);
+  border-bottom: 1.5px solid var(--green-dark);
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.block textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+}
+.followup input {
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* TAG INPUT */
+.tag-input-wrap {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  background: #fff;
+  min-height: 38px;
+}
+.tag-list { display: contents; }
+.tag {
+  background: var(--green-dark);
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.tag .x {
+  cursor: pointer;
+  font-weight: 700;
+  opacity: .85;
+}
+.tag .x:hover { opacity: 1; }
+#testInput {
+  flex: 1;
+  min-width: 160px;
+  border: none;
+  padding: 4px 6px;
+  font-size: 13px;
+  outline: none;
+}
+
+/* ========== FOOTER ========== */
+.rx-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px 28px 14px;
+  border-top: 1px dashed #cbd5e1;
+  margin-top: 12px;
+}
+.footer-left .comp-note {
+  font-size: 11px;
+  color: #6b7280;
+  font-style: italic;
+}
+.footer-right {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+}
+.stamp {
+  width: 110px;
+  height: 110px;
+  border: 2.5px solid var(--green-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.stamp::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed var(--green-dark);
+  border-radius: 50%;
+}
+.stamp-inner {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--green-dark);
+  letter-spacing: .5px;
+  line-height: 1.3;
+}
+.stamp-inner span {
+  font-size: 9px;
+  font-weight: 600;
+}
+.signature {
+  text-align: center;
+  min-width: 160px;
+}
+.sig-line {
+  border-bottom: 1px solid #374151;
+  height: 36px;
+}
+.sig-text {
+  font-size: 11px;
+  color: #374151;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ========== BOTTOM STRIP ========== */
+.bottom-strip {
+  background: var(--green-dark);
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 8px;
+  font-size: 18px;
+}
+.bottom-strip span { opacity: .92; }
+
+/* ========== PRINT ========== */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .sheet {
+    box-shadow: none;
+    margin: 0;
+    border: none;
+    max-width: 100%;
+  }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 760px) {
+  .rx-body { grid-template-columns: 1fr; }
+  .sidebar { border-right: none; border-bottom: 2px solid var(--green-dark); }
+  .patient-strip { flex-wrap: wrap; }
+  .patient-strip .field { flex: 1 1 45%; }
+  .rx-header { flex-direction: column; gap: 8px; }
+  .rx-header-right { text-align: left; }
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Payment QR placeholder</title>
+  <desc id="desc">A placeholder showing that the payment QR is configured locally</desc>
+  <rect width="240" height="240" rx="16" fill="#f2f6f6" stroke="#5f7777" stroke-width="4"/>
+  <path d="M48 48h52v52H48zm92 0h52v52h-52zM48 140h52v52H48z" fill="none" stroke="#0f4c5c" stroke-width="12"/>
+  <text x="120" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#0f4c5c">Configure locally</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg viewBox="0 0 64 128" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="cg" cx="38%" cy="26%" r="74%" fx="30%" fy="16%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="22%"  stop-color="#fdfaf3"/>
+      <stop offset="55%"  stop-color="#f3ebda"/>
+      <stop offset="82%"  stop-color="#e7dabd"/>
+      <stop offset="100%" stop-color="#dac9a4"/>
+    </radialGradient>
+    <linearGradient id="rg" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%"   stop-color="#ece0c8"/>
+      <stop offset="30%"  stop-color="#dcc596"/>
+      <stop offset="68%"  stop-color="#c2a062"/>
+      <stop offset="100%" stop-color="#9c7536"/>
+    </linearGradient>
+    <linearGradient id="rgL" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#6b4a18" stop-opacity="0.28"/>
+    </linearGradient>
+    <linearGradient id="hl" x1="12%" y1="0%" x2="60%" y2="95%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="32%"  stop-color="#ffffff" stop-opacity="0.40"/>
+      <stop offset="70%"  stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="neck" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%"   stop-color="#7a5520" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#7a5520" stop-opacity="0.38"/>
+    </linearGradient>
+  </defs>
+  <path d="M16.5,43.0 C14.2,74.0 18.8,99.0 22.0,112.0 C25.2,99.0 32.2,74.0 32.5,43.0 Z" class="tc-root" fill="url(#rg)" stroke="#8a6428" stroke-width="0.9" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M16.5,43.0 C14.2,74.0 18.8,99.0 22.0,112.0 C25.2,99.0 32.2,74.0 32.5,43.0 Z" fill="url(#rgL)" stroke="none"/>
+  <path d="M31.5,43.0 C31.8,74.0 38.8,99.0 42.0,112.0 C45.2,99.0 49.8,74.0 47.5,43.0 Z" class="tc-root" fill="url(#rg)" stroke="#8a6428" stroke-width="0.9" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M31.5,43.0 C31.8,74.0 38.8,99.0 42.0,112.0 C45.2,99.0 49.8,74.0 47.5,43.0 Z" fill="url(#rgL)" stroke="none"/>
+  <path d="M15.0,46.0 C13.4,28.0 10.3,18.0 11.5,6.0 L11.5,6.0 Q13.6,1.8 16.6,1.6 Q19.7,1.8 21.8,6.0 Q23.8,1.8 26.9,1.6 Q29.9,1.8 32.0,6.0 Q34.0,1.8 37.1,1.6 Q40.2,1.8 42.2,6.0 Q44.3,1.8 47.4,1.6 Q50.5,1.8 52.5,6.0 C53.7,18.0 50.6,28.0 49.0,46.0 Q32.0,50.0 15.0,46.0 Z" class="tc-crown tc-stroke" fill="url(#cg)" stroke="#8a6428" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M15.0,39.0 Q32.0,49.0 49.0,39.0 L49.0,39.0 Q32.0,45.0 15.0,39.0 Z" fill="url(#neck)" stroke="none" opacity="0.55"/>
+  <path d="M20.1,43.0 C18.5,27.7 14.8,19.2 16.0,9.0 L16.0,9.0 Q17.6,6.5 20.0,6.4 Q22.4,6.5 24.0,9.0 Q25.6,6.5 28.0,6.4 Q30.4,6.5 32.0,9.0 Q33.6,6.5 36.0,6.4 Q38.4,6.5 40.0,9.0 Q41.6,6.5 44.0,6.4 Q46.4,6.5 48.0,9.0 C49.2,19.2 45.5,27.7 43.9,43.0 Q32.0,47.0 20.1,43.0 Z" fill="url(#hl)" stroke="none"/>
+</svg>

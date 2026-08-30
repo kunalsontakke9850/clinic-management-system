@@ -1,0 +1,127 @@
+/* Laptop-first doctor workspace. Prescription paper and print styling are intentionally untouched. */
+
+@media screen and (min-width: 1025px) {
+  :root {
+    --dw-brand: #8b0000;
+    --dw-ink: #172033;
+    --dw-muted: #667085;
+    --dw-page: #edf1f3;
+    --dw-border: #d7dfe8;
+    --dw-rail-width: 190px;
+    --dw-rail-gap: 20px;
+  }
+
+  body.doctor-desktop {
+    display: block;
+    align-items: stretch;
+    padding: 16px;
+    background: var(--dw-page);
+  }
+
+  body.doctor-desktop.doctor-density-compact {
+    --dw-rail-width: 176px;
+    --dw-rail-gap: 16px;
+  }
+
+  body.doctor-desktop.desktop-nav-collapsed {
+    --dw-rail-width: 42px;
+    --dw-rail-gap: 14px;
+  }
+
+  body.doctor-desktop #desktopAppShell {
+    display: block;
+    height: 0;
+  }
+
+  .desktop-nav-item {
+    min-height: 42px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--dw-ink);
+    font: 700 13px 'Source Sans 3', sans-serif;
+    cursor: pointer;
+  }
+
+  body.doctor-desktop .desktop-nav {
+    position: fixed;
+    z-index: 40;
+    top: 16px;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    flex-direction: column;
+    width: var(--dw-rail-width);
+    padding: 14px 10px;
+    overflow-y: auto;
+    border: 1px solid #29374a;
+    border-radius: 12px;
+    background: #172033;
+    box-shadow: 0 8px 24px rgba(23, 32, 51, .16);
+    transition: transform 180ms ease;
+  }
+
+  body.doctor-desktop.desktop-nav-collapsed .desktop-nav { transform: translateX(calc(-100% - 20px)); }
+  .desktop-nav-actions { display: flex; justify-content: flex-end; margin: 0 2px 8px; }
+  .desktop-nav-toggle,
+  .desktop-nav-restore {
+    min-height: 34px;
+    border: 1px solid #52647d;
+    border-radius: 7px;
+    background: #233147;
+    color: #e7edf4;
+    font: 800 24px/1 'Source Sans 3', sans-serif;
+    cursor: pointer;
+  }
+  .desktop-nav-toggle { width: 34px; padding: 0; }
+  .desktop-nav-toggle:hover { background: #30435e; }
+  .desktop-nav-restore {
+    position: fixed;
+    z-index: 41;
+    top: 18px;
+    left: 18px;
+    width: 42px;
+    min-height: 42px;
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(23, 32, 51, .18);
+  }
+  .desktop-nav-restore:hover { background: #30435e; }
+  .desktop-nav-restore[hidden] { display: none; }
+
+  .desktop-nav-group { display: grid; gap: 3px; margin: 0 0 14px; }
+  .desktop-nav-group p { margin: 0 9px 4px; color: #bdc7d4; font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+  .desktop-nav-item { width: 100%; padding: 8px 11px; color: #e7edf4; text-align: left; }
+  .desktop-nav-item:hover { background: #2a3a50; }
+  .desktop-nav-item.active { border-color: #c89646; background: #fff3dc; color: #681010; }
+  .desktop-logout { margin-top: auto; color: #ffc5c5; }
+  .desktop-logout:hover { background: #4a2830; color: #fff; }
+
+  body.doctor-desktop .control-panel,
+  body.doctor-desktop #homeView,
+  body.doctor-desktop #settingsView,
+  body.doctor-desktop .page-wrapper,
+  body.doctor-desktop .tab-page {
+    width: calc(100% - var(--dw-rail-width) - var(--dw-rail-gap));
+    max-width: 1500px;
+    margin-right: 0;
+    margin-left: calc(var(--dw-rail-width) + var(--dw-rail-gap));
+  }
+
+  body.doctor-desktop .control-panel {
+    min-height: 58px;
+    margin-bottom: 14px;
+    border-color: var(--dw-border);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(23, 32, 51, .08);
+  }
+
+  body.doctor-desktop #topNav { display: none !important; }
+
+  body.doctor-desktop :is(button, input, select, textarea, [tabindex]):focus-visible {
+    outline: none !important;
+  }
+}
+
+@media print {
+  [data-desktop-workspace] { display: none !important; }
+}

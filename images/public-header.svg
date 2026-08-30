@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="280" viewBox="0 0 1400 280" role="img" aria-labelledby="title desc">
+  <title id="title">Clinic Management System</title>
+  <desc id="desc">Generic prescription header placeholder</desc>
+  <rect width="1400" height="280" fill="#0f4c5c"/>
+  <rect x="36" y="36" width="1328" height="208" rx="18" fill="none" stroke="#d9f0ee" stroke-width="3"/>
+  <text x="700" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" font-weight="700" fill="#ffffff">Clinic Management System</text>
+  <text x="700" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#d9f0ee">Configure local clinic details in config.local.js</text>
+</svg>
