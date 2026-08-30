@@ -4,7 +4,7 @@
   "description": "Desktop clinic management and digital prescription system",
   "main": "main.js",
   "scripts": {
-    "test": "node --test tests/reception-home.test.js tests/prescription-quantity.test.js tests/instructions.test.js tests/medicine-suggestions.test.js tests/medicine-parser.test.js tests/finance-core.test.js tests/finance-store.test.js tests/finance-ui.test.js tests/apps-script-contract.test.js tests/desktop-workspace.test.js tests/sheet-operation.test.js tests/whatsapp-messaging.test.js tests/github-readiness.test.js",
+    "test": "node --test tests/reception-home.test.js tests/prescription-quantity.test.js tests/instructions.test.js tests/medicine-suggestions.test.js tests/medicine-parser.test.js tests/finance-core.test.js tests/finance-store.test.js tests/finance-ui.test.js tests/apps-script-contract.test.js tests/desktop-workspace.test.js tests/sheet-operation.test.js tests/whatsapp-messaging.test.js tests/github-readiness.test.js tests/docker.test.js",
     "test:legacy": "node --test tests/*.test.js",
     "start": "electron .",
     "dist": "electron-builder --win --x64 --ia32"

@@ -2,6 +2,8 @@
 *
 !.gitignore
 !.gitattributes
+!Dockerfile
+!.dockerignore
 !README.md
 !package.json
 !package-lock.json

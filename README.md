@@ -88,6 +88,17 @@ Run the automated checks with:
 npm test
 ```
 
+## Docker Test Environment
+
+Docker provides a reproducible Node.js test environment. It does not run the Electron GUI or create the Windows installer; those remain native desktop operations.
+
+```bash
+docker build --tag clinic-management-system-test .
+docker run --rm clinic-management-system-test
+```
+
+The build context uses an allowlist, so local clinic configuration, patient-related artifacts, generated installers, and private images are not sent to the Docker daemon.
+
 ## Environment and Local Configuration
 
 The desktop application reads clinic-specific values from `config.local.js`, not from version-controlled source files. The `.env.example` file documents the corresponding variable names for deployment tooling, while `config.local.example.js` is the runnable local template.
