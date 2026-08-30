@@ -3,7 +3,7 @@
  * config.local.js is intentionally excluded from Git.
  */
 window.CONFIG = {
-  GOOGLE_SHEETS_URL: 'https://script.google.com/macros/s/your-deployment-id/exec',
+  GOOGLE_SHEETS_URL: 'https://example.invalid/google-apps-script-web-app',
   APP_WRITE_KEY: 'replace-with-your-apps-script-property-value',
   CLINIC: {
     nameMarathi: '',

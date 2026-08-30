@@ -37,12 +37,20 @@ function listSourceFiles(root) {
 
 test('public configuration contains only safe defaults and permits an ignored local override', function () {
   const config = fs.readFileSync(path.join(projectRoot, 'config.js'), 'utf8');
+  const localExample = fs.readFileSync(path.join(projectRoot, 'config.local.example.js'), 'utf8');
   const html = fs.readFileSync(path.join(projectRoot, 'index.html'), 'utf8');
 
   assert.match(config, /GOOGLE_SHEETS_URL:\s*['"]{2}/, 'the public configuration must not include a live endpoint');
   assert.match(config, /APP_WRITE_KEY:\s*['"]{2}/, 'the public configuration must not include a live write key');
   assert.match(config, /doctorName:\s*['"]Clinic Doctor['"]/, 'the public configuration must use a non-client placeholder');
   assert.ok(html.indexOf('src="config.local.js"') > html.indexOf('src="config.js"'), 'an ignored local configuration must load after public defaults');
+  assert.match(localExample, /example\.invalid/, 'the local configuration example must use a clearly non-live endpoint');
+  assert.doesNotMatch(localExample, /script\.google\.com\/macros\/s\//, 'the local configuration example must not resemble a production Apps Script URL');
+});
+
+test('default test command runs every maintained node:test file', function () {
+  const pkg = JSON.parse(fs.readFileSync(path.join(projectRoot, 'package.json'), 'utf8'));
+  assert.equal(pkg.scripts.test, 'node --test tests/*.test.js');
 });
 
 test('repository hygiene files protect generated and local-only content', function () {
