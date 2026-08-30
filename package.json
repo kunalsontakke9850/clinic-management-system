@@ -41,6 +41,7 @@
       "index.html",
       "app.js",
       "config.js",
+      "demo-data.js",
       "print.js",
       "sheets.js",
       "style.css",

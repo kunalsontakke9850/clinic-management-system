@@ -14,6 +14,7 @@
 !index.html
 !app.js
 !config.js
+!demo-data.js
 !config.local.example.js
 !.env.example
 !print.js
