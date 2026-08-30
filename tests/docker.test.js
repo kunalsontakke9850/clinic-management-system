@@ -25,6 +25,15 @@ test('Docker build context excludes live clinic configuration and generated arti
   });
 });
 
+test('Docker build context retains the safe sources required by the test suite', function () {
+  const dockerignore = fs.readFileSync(path.join(root, '.dockerignore'), 'utf8');
+
+  assert.ok(fs.existsSync(path.join(root, 'desktop-workspace.js')), 'the desktop workspace source must be present');
+  ['!.gitignore', '!desktop-workspace.js'].forEach(function (entry) {
+    assert.match(dockerignore, new RegExp('^' + entry.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$', 'm'), entry + ' must be included in the Docker build context');
+  });
+});
+
 test('Docker instructions accurately describe the non-GUI test container', function () {
   const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
   const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');

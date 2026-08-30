@@ -2,6 +2,7 @@
 *
 !Dockerfile
 !.dockerignore
+!.gitignore
 !README.md
 !package.json
 !package-lock.json
@@ -14,6 +15,7 @@
 !style.css
 !reception.css
 !desktop-workspace.css
+!desktop-workspace.js
 !html2canvas.min.js
 !jspdf.umd.min.js
 !finance-core.js
