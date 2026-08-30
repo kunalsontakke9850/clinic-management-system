@@ -1183,12 +1183,12 @@
     var dateEl = document.getElementById('rp-date');
     var searchEl = document.getElementById('rp-search');
     if (!tbody || !dateEl) return;
-    
+
     var dayStr = dateEl.value;
     if (!dayStr) return;
-    
+
     var patients = getPatientsForDay(dayStr);
-    
+
     var q = (searchEl ? searchEl.value.trim().toLowerCase() : '');
     if (q) {
       patients = patients.filter(function(p) {
@@ -1208,7 +1208,7 @@
     var html = '';
     patients.forEach(function(p, i) {
       var amountStr = p.billAmount ? '₹' + p.billAmount : '<span class="rp-amount-zero">0</span>';
-      
+
       html += '<tr>' +
         '<td class="rp-serial">' + (i + 1) + '</td>' +
         '<td class="rp-name-cell">' + (p.name || '') + '</td>' +
