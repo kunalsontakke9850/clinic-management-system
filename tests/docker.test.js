@@ -38,7 +38,7 @@ test('Docker instructions accurately describe the non-GUI test container', funct
   const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
   const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
 
-  assert.match(pkg.scripts.test, /tests\/docker\.test\.js/, 'the default test command must include the Docker contract');
+  assert.match(pkg.scripts.test, /tests\/(?:\*\.test\.js|docker\.test\.js)/, 'the default test command must include the Docker contract');
   assert.match(readme, /## Docker Test Environment/, 'README must document the Docker setup');
   assert.match(readme, /does not run the Electron GUI/i, 'README must set the correct Docker runtime expectation');
 });

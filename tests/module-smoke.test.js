@@ -114,5 +114,5 @@ test('Electron Builder packages the desktop workspace assets', function () {
 
 test('the selected test command includes the desktop workspace contract', function () {
   const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'));
-  assert.match(pkg.scripts.test, /tests\/desktop-workspace\.test\.js/);
+  assert.match(pkg.scripts.test, /tests\/(?:\*\.test\.js|desktop-workspace\.test\.js)/);
 });
