@@ -71,6 +71,10 @@ release/
 # Private/local project material
 Trial 2/
 docs/superpowers/
+!docs/
+!docs/superpowers/
+!docs/superpowers/specs/
+!docs/superpowers/specs/2026-08-30-public-portfolio-release-design.md
 images/Header.png
 images/Header.jpeg
 images/Header_backup.png
